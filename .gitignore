@@ -17,6 +17,3 @@
 
 # Ignore Spring files.
 /spring/*.pid
-
-# Ignore lcok files
-*.lock
