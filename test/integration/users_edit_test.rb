@@ -33,4 +33,11 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_equal @user.name,  name
     assert_equal @user.email, email
   end
+
+  test "friendly forwarding when accessing edit page" do
+    get edit_user_path(@user)
+    log_in_as(@user)
+    assert_template 'users/edit'
+  end
+
 end
