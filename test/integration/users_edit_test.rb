@@ -37,7 +37,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   test "friendly forwarding when accessing edit page" do
     get edit_user_path(@user)
     log_in_as(@user)
-    assert_template 'users/edit'
+    assert_redirected_to edit_user_path(@user)
   end
 
 end
