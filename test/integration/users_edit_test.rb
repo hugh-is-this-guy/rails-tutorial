@@ -5,6 +5,11 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     @user = users(:joe)
   end
 
+  test 'form is rendered on edit page' do
+    get signup_path
+    assert_select 'form input#user_name'
+  end
+
   test "unsuccessful edit" do    
     log_in_as(@user)
     get edit_user_path(@user)
@@ -38,6 +43,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     get edit_user_path(@user)
     log_in_as(@user)
     assert_redirected_to edit_user_path(@user)
+    assert_nil session[:forwarding_url]
   end
 
 end

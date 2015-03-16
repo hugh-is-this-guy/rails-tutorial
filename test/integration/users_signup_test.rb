@@ -2,6 +2,11 @@ require 'test_helper'
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
   
+  test 'form is rendered on signup page' do
+    get signup_path
+    assert_select 'form input#user_name'
+  end
+
   test "invalid signup information" do
     get signup_path
     assert_no_difference 'User.count' do
@@ -27,4 +32,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_not flash.nil?
     assert is_logged_in?
   end
+
+
 end
