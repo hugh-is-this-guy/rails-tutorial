@@ -20,5 +20,10 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     @user.microposts.paginate(page: 1).each_with_index do |micropost, i|
       assert_match micropost.content, response.body
     end
+
+    assert_select '.stats #following', text: @user.following.count.to_s
+    assert_select '.stats #followers', text: @user.followers.count.to_s
+
   end
+
 end
